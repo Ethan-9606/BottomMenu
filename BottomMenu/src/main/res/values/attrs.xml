@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BottomMenu">
+        <attr name="menu_marginBottom" format="dimension" />
+        <attr name="menu_backgroundArcHeghit" format="dimension" />
+        <attr name="menu_backgroundHeight" format="dimension" />
+        <attr name="menu_item_marginEdge" format="dimension"/>
+        <attr name="menu_backgroundColor" format="color" />
+        <attr name="menu_animDuration" format="integer" />
+    </declare-styleable>
+</resources>
