@@ -321,7 +321,7 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
         AlphaAnimation alphaAnimation = null;
         // to open
         if (mStatus == Status.CLOSE) {
-            tranlateAnim = new TranslateAnimation(0, 0, childView.getMeasuredHeight(), 0);
+            tranlateAnim = new TranslateAnimation(0, 0, childView.getMeasuredHeight() * 2, 0);
             tranlateAnim.setInterpolator(new DecelerateInterpolator());
 
             alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
@@ -330,7 +330,7 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
             childView.setClickable(true);
             childView.setFocusable(true);
         } else {
-            tranlateAnim = new TranslateAnimation(0, 0, 0, childView.getMeasuredHeight());
+            tranlateAnim = new TranslateAnimation(0, 0, 0, childView.getMeasuredHeight() * 2);
             tranlateAnim.setInterpolator(new DecelerateInterpolator());
 
             alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
