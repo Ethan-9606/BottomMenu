@@ -23,73 +23,48 @@ import android.view.animation.TranslateAnimation;
 
 /**
  * Created by zhangshusen on 2017/3/14.
- * <p>
- * 从底部弹起的菜单，xml中第一个child为展开按钮
+ *
  */
 
 public class BottomMenu extends ViewGroup implements View.OnClickListener {
 
 
-    /**
-     * 默认值
-     */
+
     private static final int DEFAULT_ANMI_DURATION = 300;
     private static final int DEFAULT_ARC_HEIGHT = 180;
     private static final int DEFAULT_HEGIHT = 150;
 
 
-    /**
-     * 菜单弹出半径
-     */
+
     private int mRadius;
-    /**
-     * 菜单距离底部距离  便于调整位置
-     */
+
     private int mMarginBottom;
-    /**
-     * 主菜单按钮
-     */
+
     private View mButton;
 
 
-    /**
-     * 背景弧最终半径
-     */
+
     private int mBackgroundRadius;
-    /**
-     * 绘制过程中背景弧的动态半径
-     */
+
     private int mDrawingBackgroundRadius;
-    /**
-     * 背景高度
-     */
+
     private int mBackgrondheight;
-    /**
-     * 背景弧高（最高点）
-     */
+
     private int mBackgroudArcHeight;
 
-    /**
-     * 菜单元素距边缘的距离
-     */
+
     private int mItemMarginEdge;
 
-    /**
-     * 菜单放置的角度区间
-     */
+
     private double mItemAngleSection;
-    /**
-     * 背景色
-     */
+
     @ColorInt
     private int mBackgroudColor;
-    // 画背景圆心坐标
+
     private int mDrawX;
     private int mDrawY;
 
-    /**
-     * 圆心与屏幕底边距离
-     */
+
     private int mPointOffetScreenY;
 
     private int mStartDrawingY;
@@ -98,11 +73,11 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
 
     private Paint mPaint;
 
-    // 对外提供的接口
+
     private OnMenuItemClickListener mOnMenuItemClickListener;
     private OnAnimationRunningListener mOnAnimationRunningListener;
 
-    // 状态
+
     private Status mStatus = Status.CLOSE;
 
     @IntRange(from = 10, to = 2000)
@@ -348,9 +323,7 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
 
     }
 
-    /**
-     * 添加menuItem的点击动画
-     */
+
     private void menuItemClickAnim(int pos) {
         isAnimRunning = true;
         if (mOnAnimationRunningListener != null) {
@@ -432,7 +405,7 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                // 变化区间设在0~1  方便映射到其他区间
+
                 float cVal = (float) animation.getAnimatedValue();
                 setBackgroundColor(Color.argb((int) (cVal * 180), 255, 255, 255));
                 mDrawingBackgroundRadius = (int) (mBackgroundRadius * cVal);
@@ -500,16 +473,12 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
         return mStatus == Status.OPEN;
     }
 
-    /**
-     * 点击子菜单项的回调接口
-     */
+
     public interface OnMenuItemClickListener {
         void onClick(View view, int pos);
     }
 
-    /**
-     * 动画监听接口
-     */
+
     public interface OnAnimationRunningListener {
 
         void onAnimationStart();
@@ -519,9 +488,7 @@ public class BottomMenu extends ViewGroup implements View.OnClickListener {
         void onAnimationEnd();
     }
 
-    /**
-     * 菜单的状态枚举
-     */
+
     public enum Status {
         OPEN, CLOSE
     }
