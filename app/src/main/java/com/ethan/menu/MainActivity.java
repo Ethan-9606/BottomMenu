@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.ethan.menu.lib.BottomMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mList;
     private List<String> datas;
+    private BottomMenu mMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
             datas.add("test" + i);
         }
         mList.setAdapter(new MyAdapter());
+        mMenu = (BottomMenu) findViewById(R.id.home_menu);
+        mMenu.setOnMenuItemClickListener(new BottomMenu.OnMenuItemClickListener() {
+            @Override
+            public void onClick(View view, int pos) {
+                Toast.makeText(MainActivity.this, "item" + pos, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
